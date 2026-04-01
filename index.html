@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="logo.png" alt="Farm Logo"
+                    style="width: 85px; height: 85px; object-fit: contain; display: block;" />
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-item active" title="Home">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="Analyze Crop" onclick="window.location.href='crop_history.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                        <path d="M2 22 12 12" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="Analyze Soil" onclick="window.location.href='soil_history.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 12 12 17 22 12" />
+                        <polyline points="2 17 12 22 22 17" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="Live Scan" onclick="window.location.href='live_scan.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M3 12h2" />
+                        <path d="M19 12h2" />
+                        <path d="M12 3v2" />
+                        <path d="M12 19v2" />
+                        <circle cx="12" cy="12" r="10" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="Field">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                        <line x1="9" y1="3" x2="9" y2="18" />
+                        <line x1="15" y1="6" x2="15" y2="21" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="History">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                        <path d="M12 7v5l4 2" />
+                    </svg>
+                </div>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="nav-item logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" x2="9" y1="12" y2="12" />
+                    </svg>
+                </div>
+                <div class="avatar-circle">
+                    <img src="https://i.pravatar.cc/150?img=12" alt="User">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div>
+                    <h1>Hello, Alex!</h1>
+                    <p class="subtitle">Ready for today's challenges?</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" x2="16.65" y1="21" y2="16.65" />
+                        </svg>
+                        <input type="text" placeholder="Search for some activities">
+                    </div>
+                    <button class="btn-zenspace">
+                        <span>SFE</span>
+                        <div class="zs-wrapper">
+                            <img src="zenspace-logo.png" alt="ZenSpace Logo" class="zs-logo">
+                        </div>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Grid Layout -->
+            <div class="bento-grid">
+                <!-- Physical Activity -->
+                <div class="card physical-activity">
+                    <div class="card-header">
+                        <h2>Indicators</h2>
+                        <div class="dropdown">Today <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg></div>
+                    </div>
+                    <div class="charts-row">
+                        <div class="chart-col weather-card">
+                            <div class="weather-top">
+                                <div class="weather-info">
+                                    <div class="w-location">New Delhi</div>
+                                    <div class="w-temp-xl">24°</div>
+                                </div>
+                                <div class="w-icon-xl">
+                                    <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="4" />
+                                        <path d="M12 2v2" />
+                                        <path d="M12 20v2" />
+                                        <path d="m4.93 4.93 1.41 1.41" />
+                                        <path d="m17.66 17.66 1.41 1.41" />
+                                        <path d="M2 12h2" />
+                                        <path d="M20 12h2" />
+                                        <path d="m6.34 17.66-1.41 1.41" />
+                                        <path d="m19.07 4.93-1.41 1.41" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="weather-bottom">
+                                <div class="w-stat-box">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--text-gray)" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2" />
+                                    </svg>
+                                    <span class="w-val">12 km/h</span>
+                                    <span class="w-label">Wind</span>
+                                </div>
+                                <div class="w-stat-box">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--text-gray)" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 22a5 5 0 0 0 5-5c0-2-5-10-5-10S7 15 7 17a5 5 0 0 0 5 5z" />
+                                    </svg>
+                                    <span class="w-val">45%</span>
+                                    <span class="w-label">Humidity</span>
+                                </div>
+                                <div class="w-stat-box">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--text-gray)" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M16 13v8" />
+                                        <path d="M8 13v8" />
+                                        <path d="M12 15v8" />
+                                        <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25" />
+                                    </svg>
+                                    <span class="w-val">0 mm</span>
+                                    <span class="w-label">Rain</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-col upload-col">
+                            <div class="analyze-card" id="analyzeCropCard">
+                                <input type="file" id="cropImageInput" accept="image/*" style="display:none;">
+                                <div class="analyze-top">
+                                    <span class="analyze-title">Analyze<br>Crop</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#76C852"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                                        <path d="M2 22 12 12" />
+                                    </svg>
+                                </div>
+                                <div class="upload-area">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v-9a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9" />
+                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                                        <circle cx="8" cy="8" r="2" />
+                                        <line x1="19" y1="16" x2="19" y2="22" />
+                                        <line x1="16" y1="19" x2="22" y2="19" />
+                                    </svg>
+                                    <span class="upload-text">Upload<br>photo</span>
+                                </div>
+                            </div>
+                            <div class="analyze-card" id="analyzeSoilCard">
+                                <input type="file" id="soilImageInput" accept="image/*" style="display:none;">
+                                <div class="analyze-top">
+                                    <span class="analyze-title">Analyze<br>Soil</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A245"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12h20" />
+                                        <path d="M12 2a15 15 0 0 0 0 20a15 15 0 0 0 0-20" />
+                                        <circle cx="12" cy="12" r="10" />
+                                    </svg>
+                                </div>
+                                <div class="upload-area">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v-9a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9" />
+                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                                        <circle cx="8" cy="8" r="2" />
+                                        <line x1="19" y1="16" x2="19" y2="22" />
+                                        <line x1="16" y1="19" x2="22" y2="19" />
+                                    </svg>
+                                    <span class="upload-text">Upload<br>photo</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Your Active Days -->
+                <div class="card active-days bg-blue">
+                    <div class="card-header">
+                        <h2>Calendar</h2>
+                        <div class="dropdown"><span id="monthName">November</span> <svg width="14" height="14"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg></div>
+                    </div>
+                    <div class="cal-weekdays">
+                        <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+                    </div>
+                    <div class="cal-grid" id="calendarGrid">
+                    </div>
+                </div>
+
+                <!-- Field Map Card -->
+                <div class="card field-map-card">
+                    <div class="fm-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                        0.17
+                    </div>
+                    <div class="fm-capsule-tr">Corn field</div>
+                    <div class="fm-polygon">
+                        <svg viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+                            <polygon points="40,24 65,24 73,78 35,70" fill="#ECA26A" />
+                        </svg>
+                    </div>
+                </div>
+
+
+                <!-- Upcoming Tasks -->
+                <div class="card my-activities">
+                    <div class="act-header">
+                        <h2>Upcoming Tasks</h2>
+                        <span class="planned-text">You have 3 upcoming tasks</span>
+                    </div>
+                    <div class="tabs">
+                        <div class="tab active">All</div>
+                        <div class="tab">Field</div>
+                        <div class="tab">Lab</div>
+                    </div>
+                    <div class="activities-grid">
+                        <div class="act-box bg-blue">
+                            <div class="act-box-top">
+                                <div class="task-badge urgent">Urgent</div>
+                                <div class="act-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="6" width="20" height="12" rx="2" ry="2" />
+                                        <path d="M12 2v4" />
+                                        <path d="M4 14v4" />
+                                        <path d="M20 14v4" />
+                                    </svg></div>
+                            </div>
+                            <div class="act-box-info">
+                                <h3>Tractor Maintenance</h3>
+                                <p>7:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="act-box bg-dark">
+                            <div class="act-box-top">
+                                <div class="task-badge routine">Routine</div>
+                                <div class="act-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                                        <path d="M2 22 12 12" />
+                                    </svg></div>
+                            </div>
+                            <div class="act-box-info">
+                                <h3>Crop Harvesting</h3>
+                                <p>2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="act-box bg-dark">
+                            <div class="act-box-top">
+                                <div class="task-badge pending">Pending</div>
+                                <div class="act-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 2v20" />
+                                        <path d="M8 8l8 8" />
+                                        <path d="M16 8l-8 8" />
+                                        <path d="M2 12h20" />
+                                    </svg></div>
+                            </div>
+                            <div class="act-box-info">
+                                <h3>Soil Tilling</h3>
+                                <p>4:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="act-box add-box">
+                            <div class="add-icon">+</div>
+                            <p>Add Task</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wheat Field Card -->
+                <div class="card field-map-card bg-green">
+                    <div class="fm-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                        0.15
+                    </div>
+                    <div class="fm-capsule-tr">Wheat Field</div>
+                    <div class="fm-polygon">
+                        <svg viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+                            <polygon points="50,25 78,45 66,78 34,78 22,45" fill="#A8D596" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Crop Analysis Overlay -->
+    <div id="cropScanOverlay" class="scan-overlay hidden">
+        <div class="scan-bg-grid"></div>
+        <div class="scan-content">
+            <div class="scan-image-frame">
+                <img id="scanPreviewImg" src="" alt="Crop">
+                <div class="scan-line"></div>
+                <div class="scan-corner tl"></div>
+                <div class="scan-corner tr"></div>
+                <div class="scan-corner bl"></div>
+                <div class="scan-corner br"></div>
+                <div class="scan-pulse-ring"></div>
+            </div>
+            <div class="scan-info">
+                <div class="scan-badge">
+                    <span class="scan-dot"></span>
+                    AI CROP ANALYSIS
+                </div>
+                <h2 class="scan-title">Scanning Crop Image<span class="ellipsis"></span></h2>
+                <div class="scan-metrics">
+                    <div class="metric-row" id="m1"><span class="metric-label">Leaf Health Index</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="m2"><span class="metric-label">Chlorophyll Level</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="m3"><span class="metric-label">Disease Detection</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="m4"><span class="metric-label">Moisture Stress</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="m5"><span class="metric-label">Growth Stage</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                </div>
+                <p class="scan-status" id="scanStatus">Initializing neural network...</p>
+                <button class="scan-close-btn" id="scanCloseBtn">View Results</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Soil Analysis Overlay -->
+    <div id="soilScanOverlay" class="scan-overlay soil-scan hidden">
+        <div class="scan-bg-grid"></div>
+        <div class="scan-content">
+            <div class="scan-image-frame">
+                <img id="soilScanPreviewImg" src="" alt="Soil">
+                <div class="scan-line"></div>
+                <div class="scan-corner tl"></div>
+                <div class="scan-corner tr"></div>
+                <div class="scan-corner bl"></div>
+                <div class="scan-corner br"></div>
+                <div class="scan-pulse-ring"></div>
+            </div>
+            <div class="scan-info">
+                <div class="scan-badge">
+                    <span class="scan-dot"></span>
+                    AI SOIL ANALYSIS
+                </div>
+                <h2 class="scan-title">Scanning Soil Image<span class="ellipsis"></span></h2>
+                <div class="scan-metrics">
+                    <div class="metric-row" id="sm1"><span class="metric-label">pH Level</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="sm2"><span class="metric-label">Nitrogen (N)</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="sm3"><span class="metric-label">Phosphorus (P)</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="sm4"><span class="metric-label">Potassium (K)</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                    <div class="metric-row" id="sm5"><span class="metric-label">Moisture</span><span
+                            class="metric-bar"><span class="metric-fill" style="width:0%"></span></span><span
+                            class="metric-val">—</span></div>
+                </div>
+                <p class="scan-status" id="soilScanStatus">Initializing neural network...</p>
+                <button class="scan-close-btn" id="soilScanCloseBtn">View Results</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Popup Overlay -->
+    <div id="errorPopupOverlay" class="scan-overlay hidden" style="z-index: 10000;">
+        <div class="scan-content"
+            style="max-width: 400px; flex-direction: column; text-align: center; gap: 20px; background: #191A1E; padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 82, 82, 0.3); box-shadow: 0 0 50px rgba(255, 82, 82, 0.1);">
+            <div
+                style="width: 60px; height: 60px; border-radius: 50%; background: rgba(255, 82, 82, 0.1); color: #ff5252; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            <div>
+                <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #fff;">Analysis Failed</h2>
+                <p style="color: var(--text-gray); font-size: 14px; line-height: 1.5;">Please upload a clear image to
+                    proceed with the analysis.</p>
+            </div>
+            <button class="scan-close-btn ready"
+                style="margin-top: 10px; background: #2B2D31; color: #fff; width: 100%;"
+                onclick="document.getElementById('errorPopupOverlay').classList.add('hidden');">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

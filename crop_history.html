@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop History — AgroAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .history-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius-card);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: #C5F255;
+        }
+
+        .hc-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hc-content {
+            padding: 20px;
+        }
+
+        .hc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .hc-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-white);
+        }
+
+        .hc-date {
+            font-size: 12px;
+            color: var(--text-gray);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .hc-metrics {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .hc-metric {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hcm-val {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .hcm-label {
+            font-size: 11px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hc-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .hc-status.safe {
+            background: rgba(118, 200, 82, 0.15);
+            color: #76C852;
+            border: 1px solid rgba(118, 200, 82, 0.3);
+        }
+
+        .hc-status.warn {
+            background: rgba(245, 162, 69, 0.15);
+            color: #F5A245;
+            border: 1px solid rgba(245, 162, 69, 0.3);
+        }
+
+        .hc-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .hc-status.safe .hc-status-dot { background: #76C852; }
+        .hc-status.warn .hc-status-dot { background: #F5A245; }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="logo.png" alt="Farm Logo"
+                    style="width: 85px; height: 85px; object-fit: contain; display: block;" />
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-item" title="Home" onclick="window.location.href='index.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                </div>
+                <div class="nav-item active" title="Analyze Crop">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                        <path d="M2 22 12 12" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="Analyze Soil" onclick="window.location.href='soil_history.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 12 12 17 22 12" />
+                        <polyline points="2 17 12 22 22 17" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="Live Scan" onclick="window.location.href='live_scan.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M3 12h2" />
+                        <path d="M19 12h2" />
+                        <path d="M12 3v2" />
+                        <path d="M12 19v2" />
+                        <circle cx="12" cy="12" r="10" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="Field">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                        <line x1="9" y1="3" x2="9" y2="18" />
+                        <line x1="15" y1="6" x2="15" y2="21" />
+                    </svg>
+                </div>
+                <div class="nav-item" title="History">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                        <path d="M12 7v5l4 2" />
+                    </svg>
+                </div>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="nav-item logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" x2="9" y1="12" y2="12" />
+                    </svg>
+                </div>
+                <div class="avatar-circle">
+                    <img src="https://i.pravatar.cc/150?img=12" alt="User">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div>
+                    <h1>Previously Scanned Crops</h1>
+                    <p class="subtitle">View history and detailed reports of your previous analyses.</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" x2="16.65" y1="21" y2="16.65" />
+                        </svg>
+                        <input type="text" placeholder="Search past scans...">
+                    </div>
+                </div>
+            </header>
+
+            <!-- History Grid -->
+            <div class="history-grid">
+                <!-- Card 1 -->
+                <div class="history-card" onclick="window.location.href='analysis.html'">
+                    <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&q=80&w=600" alt="Wheat Crop" class="hc-image">
+                    <div class="hc-content">
+                        <div class="hc-header">
+                            <span class="hc-title">Wheat Field A</span>
+                            <span class="hc-date">Yesterday</span>
+                        </div>
+                        <div class="hc-metrics">
+                            <div class="hc-metric">
+                                <span class="hcm-val">82%</span>
+                                <span class="hcm-label">Health</span>
+                            </div>
+                            <div class="hc-metric">
+                                <span class="hcm-val" style="color: #fff">V6</span>
+                                <span class="hcm-label">Stage</span>
+                            </div>
+                        </div>
+                        <div class="hc-status warn">
+                            <div class="hc-status-dot"></div>
+                            Aphids Detected
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="history-card" onclick="window.location.href='analysis.html'">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=600" alt="Corn Crop" class="hc-image">
+                    <div class="hc-content">
+                        <div class="hc-header">
+                            <span class="hc-title">Corn Field B</span>
+                            <span class="hc-date">Oct 12</span>
+                        </div>
+                        <div class="hc-metrics">
+                            <div class="hc-metric">
+                                <span class="hcm-val" style="color: #76C852;">94%</span>
+                                <span class="hcm-label">Health</span>
+                            </div>
+                            <div class="hc-metric">
+                                <span class="hcm-val" style="color: #fff">V8</span>
+                                <span class="hcm-label">Stage</span>
+                            </div>
+                        </div>
+                        <div class="hc-status safe">
+                            <div class="hc-status-dot"></div>
+                            Healthy
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="history-card" onclick="window.location.href='analysis.html'">
+                    <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?auto=format&fit=crop&q=80&w=600" alt="Soybean Crop" class="hc-image">
+                    <div class="hc-content">
+                        <div class="hc-header">
+                            <span class="hc-title">Soybean Plot 1</span>
+                            <span class="hc-date">Oct 05</span>
+                        </div>
+                        <div class="hc-metrics">
+                            <div class="hc-metric">
+                                <span class="hcm-val" style="color: #F5A245;">76%</span>
+                                <span class="hcm-label">Health</span>
+                            </div>
+                            <div class="hc-metric">
+                                <span class="hcm-val" style="color: #fff">R2</span>
+                                <span class="hcm-label">Stage</span>
+                            </div>
+                        </div>
+                        <div class="hc-status warn">
+                            <div class="hc-status-dot"></div>
+                            Mildew Risk
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

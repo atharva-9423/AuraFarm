@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corn Crop Analysis Report — AgroAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="analysis.css">
+</head>
+<body>
+
+    <!-- Top Nav -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+            <div class="nav-brand">AgroAI <span>Analysis</span></div>
+        </div>
+        <div class="nav-right">
+            <div class="crop-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 22 12 12"/></svg>
+                🌽 Corn / Maize Crop
+            </div>
+            <div class="confidence-badge">AI Confidence: <strong>80%</strong></div>
+            <button class="btn-back" onclick="history.back()">← Dashboard</button>
+        </div>
+    </nav>
+
+    <!-- Main grid -->
+    <main class="report-grid">
+
+        <!-- Row 1: Responsive Hero Bento -->
+        <section class="report-card hero-img-card" id="sec-hero-img">
+            <div class="hero-image-wrap">
+                <img id="heroImg" src="" alt="Corn Crop Image">
+                <div class="hero-overlay"></div>
+                <div class="hero-scan-complete">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5F255" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    Scanned Complete
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card hero-info-card span-3" id="sec-hero-info">
+            <p class="hero-eyebrow">🌽 AI CORN CROP REPORT</p>
+            <h1>Corn Crop <span>Analysis</span></h1>
+            <p class="hero-sub">Detailed diagnostics from multi-spectral models. Crop status is currently evaluated as <strong>Healthy</strong>.</p>
+            <div class="hero-stats">
+                <div class="h-stat"><span class="h-val">V3–V5</span><span class="h-label">Stage</span></div>
+                <div class="h-divider"></div>
+                <div class="h-stat"><span class="h-val">None</span><span class="h-label">Risk</span></div>
+                <div class="h-divider"></div>
+                <div class="h-stat"><span class="h-val">80%</span><span class="h-label">Confidence</span></div>
+            </div>
+        </section>
+
+        <!-- 1. Fertilizer Recommendation -->
+        <section class="report-card fertilizer-card span-4" id="sec-fertilizer">
+            <div class="card-header-line">
+                <div class="card-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m8 8 4-6 4 6"/><rect x="3" y="14" width="18" height="7" rx="1"/></svg></div>
+                <h2>Fertilizer Recommendation</h2>
+            </div>
+            <div class="fert-grid">
+                <div class="fert-item">
+                    <div class="fert-circle n">N</div>
+                    <div class="fert-info">
+                        <span class="fert-name">Urea (Nitrogen)</span>
+                        <span class="fert-dose">Split in 3 doses</span>
+                        <span class="fert-note">25% basal · 25% at 20DAS · 50% at 40DAS</span>
+                    </div>
+                    <div class="fert-bar-wrap"><div class="fert-bar-fill" style="width:80%; background:#C5F255"></div></div>
+                </div>
+                <div class="fert-item">
+                    <div class="fert-circle p">P</div>
+                    <div class="fert-info">
+                        <span class="fert-name">DAP (N + Phosphorus)</span>
+                        <span class="fert-dose">100% at basal</span>
+                        <span class="fert-note">Full dose at sowing time</span>
+                    </div>
+                    <div class="fert-bar-wrap"><div class="fert-bar-fill" style="width:60%; background:#FF9B42"></div></div>
+                </div>
+                <div class="fert-item">
+                    <div class="fert-circle k">K</div>
+                    <div class="fert-info">
+                        <span class="fert-name">MOP (Potash)</span>
+                        <span class="fert-dose">Split: 50% + 50%</span>
+                        <span class="fert-note">50% basal · 50% at 40–45 DAS</span>
+                    </div>
+                    <div class="fert-bar-wrap"><div class="fert-bar-fill" style="width:45%; background:#A385FF"></div></div>
+                </div>
+            </div>
+
+            <!-- Split Application Table -->
+            <div class="split-table">
+                <div class="split-row header-row">
+                    <span>Application Stage</span><span>Urea</span><span>DAP</span><span>MOP</span>
+                </div>
+                <div class="split-row">
+                    <span>Basal (At Sowing)</span><span>25%</span><span>100%</span><span>50%</span>
+                </div>
+                <div class="split-row">
+                    <span>1st Top Dress (20–25 DAS)</span><span>25%</span><span>—</span><span>—</span>
+                </div>
+                <div class="split-row">
+                    <span>2nd Top Dress (40–45 DAS)</span><span>50%</span><span>—</span><span>50%</span>
+                </div>
+            </div>
+
+            <div class="tip-box">💡 Apply fertilizer near root zone, not directly on the plant.</div>
+        </section>
+
+        <!-- Disease & Irrigation Row (40/60 Split) -->
+        <div class="split-row-wrapper span-4">
+            <!-- 4. Disease & Pest Detection -->
+            <section class="report-card disease-card" id="sec-disease">
+                <div class="card-header-line">
+                    <div class="card-icon red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                    <h2>Disease & Pest Detection</h2>
+                </div>
+                <p class="section-note good-note">✅ No major disease visible right now — good sign!</p>
+                <div class="detection-list">
+                    <div class="detection-item safe">
+                        <div class="det-status safe-dot"></div>
+                        <div class="det-info"><span class="det-name">Leaf Blight</span><span class="det-sub">No symptoms detected — watch in humid conditions</span></div>
+                        <span class="det-badge safe">Watch</span>
+                    </div>
+                    <div class="detection-item safe">
+                        <div class="det-status safe-dot"></div>
+                        <div class="det-info"><span class="det-name">Downy Mildew</span><span class="det-sub">No signs visible at this stage</span></div>
+                        <span class="det-badge safe">Clear</span>
+                    </div>
+                    <div class="detection-item safe">
+                        <div class="det-status safe-dot"></div>
+                        <div class="det-info"><span class="det-name">Rust</span><span class="det-sub">No rust pustules on leaves</span></div>
+                        <span class="det-badge safe">Clear</span>
+                    </div>
+                    <div class="detection-item warn">
+                        <div class="det-status warn-dot"></div>
+                        <div class="det-info"><span class="det-name">🚨 Fall Armyworm</span><span class="det-sub">Very important — high-risk pest for corn, scout weekly</span></div>
+                        <span class="det-badge danger">High Risk</span>
+                    </div>
+                    <div class="detection-item safe">
+                        <div class="det-status safe-dot"></div>
+                        <div class="det-info"><span class="det-name">Stem Borer</span><span class="det-sub">No borer damage visible at this stage</span></div>
+                        <span class="det-badge safe">Watch</span>
+                    </div>
+                    <div class="detection-item safe">
+                        <div class="det-status safe-dot"></div>
+                        <div class="det-info"><span class="det-name">Aphids / Termites</span><span class="det-sub">Not detected — maintain field hygiene</span></div>
+                        <span class="det-badge safe">Clear</span>
+                    </div>
+                </div>
+                <div class="treatment-box">
+                    <strong>Prevention Plan:</strong> Use Neem oil spray weekly · Install pheromone traps · Apply Chlorantraniliprole if armyworm is spotted · Maintain field hygiene
+                </div>
+            </section>
+
+            <!-- 5. Water & Irrigation -->
+            <section class="report-card irrigation-card" id="sec-irrigation">
+            <div class="card-header-line">
+                <div class="card-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a5 5 0 0 0 5-5c0-2-5-10-5-10S7 15 7 17a5 5 0 0 0 5 5z"/></svg></div>
+                <h2>Water & Irrigation</h2>
+            </div>
+            <div class="irr-grid">
+                <div class="irr-stat prominent-stat">
+                    <span class="irr-label">Next Irrigation In</span>
+                    <span class="irr-val">2 Days</span>
+                    <div class="irr-subtext">Soil moisture currently 45%</div>
+                </div>
+                <div class="irr-stat-group">
+                    <div class="irr-stat simple-stat">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#516CF5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a5 5 0 0 0 5-5c0-2-5-10-5-10S7 15 7 17a5 5 0 0 0 5 5z"/></svg>
+                        <div class="i-col">
+                            <span class="irr-val">4–6 mm/day</span>
+                            <span class="irr-label">ET Demand</span>
+                        </div>
+                    </div>
+                    <div class="irr-stat simple-stat">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5F255" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+                        <div class="i-col">
+                            <span class="irr-val">Drip / Furrow</span>
+                            <span class="irr-label">Recommended</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="irr-schedule">
+                <p class="irr-schedule-title">Weekly Irrigation Demand by Growth Phase</p>
+                <div class="irr-days">
+                    <div class="irr-day"><span>Wk1–4</span><div class="irr-bar" style="height:30%"></div><span class="irr-mm">Light</span></div>
+                    <div class="irr-day"><span>Wk5</span><div class="irr-bar" style="height:45%"></div><span class="irr-mm">Mod</span></div>
+                    <div class="irr-day"><span>Wk6</span><div class="irr-bar" style="height:50%"></div><span class="irr-mm">Mod</span></div>
+                    <div class="irr-day"><span>Wk7</span><div class="irr-bar" style="height:55%"></div><span class="irr-mm">Mod</span></div>
+                    <div class="irr-day"><span>Wk8</span><div class="irr-bar" style="height:80%"></div><span class="irr-mm">High</span></div>
+                    <div class="irr-day"><span>Wk9</span><div class="irr-bar" style="height:90%"></div><span class="irr-mm">Peak</span></div>
+                    <div class="irr-day"><span>Wk10+</span><div class="irr-bar" style="height:70%"></div><span class="irr-mm">High</span></div>
+                </div>
+            </div>
+            <div class="tip-box">⚠️ Avoid waterlogging — corn roots are highly sensitive to oxygen deficiency.</div>
+        </section>
+        </div>
+
+        <!-- 6. Climate Conditions -->
+        <section class="report-card climate-card span-2" id="sec-climate">
+            <div class="card-header-line">
+                <div class="card-icon yellow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></div>
+                <h2>Climate Conditions</h2>
+            </div>
+            <div class="climate-compare">
+                <div class="climate-col current">
+                    <h3>Current (India)</h3>
+                    <div class="climate-param"><span>Temperature</span><strong class="good">28–34°C ✅</strong></div>
+                    <div class="climate-param"><span>Humidity</span><strong class="good">~60% ✅</strong></div>
+                    <div class="climate-param"><span>Wind Speed</span><strong class="good">OK</strong></div>
+                    <div class="climate-param"><span>Rainfall</span><strong class="warn">Moderate</strong></div>
+                    <div class="climate-param"><span>Sunshine Hrs</span><strong class="good">Good</strong></div>
+                    <div class="climate-param"><span>UV Index</span><strong class="good">Normal</strong></div>
+                </div>
+                <div class="climate-divider"></div>
+                <div class="climate-col ideal">
+                    <h3>Ideal for Corn</h3>
+                    <div class="climate-param"><span>Temperature</span><strong>20–32°C</strong></div>
+                    <div class="climate-param"><span>Humidity</span><strong>50–70%</strong></div>
+                    <div class="climate-param"><span>Wind Speed</span><strong>Low–Moderate</strong></div>
+                    <div class="climate-param"><span>Rainfall</span><strong>Moderate</strong></div>
+                    <div class="climate-param"><span>Sunshine Hrs</span><strong>6–8 hrs/day</strong></div>
+                    <div class="climate-param"><span>UV Index</span><strong>Medium–High</strong></div>
+                </div>
+            </div>
+            <div class="climate-alert good-alert">
+                🌤️ Overall: Favorable climate conditions for corn growth. Temperature is slightly high — ensure adequate irrigation during peak hours.
+            </div>
+        </section>
+
+        <!-- 3. Expected Harvest (Moved next to Climate) -->
+        <section class="report-card harvest-card span-2" id="sec-harvest">
+            <div class="card-header-line">
+                <div class="card-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></div>
+                <h2>Expected Harvest</h2>
+            </div>
+            <div class="harvest-countdown">
+                <div class="countdown-ring">
+                    <svg viewBox="0 0 120 120" width="120" height="120">
+                        <circle cx="60" cy="60" r="52" fill="none" stroke="#2b2d31" stroke-width="10"/>
+                        <circle cx="60" cy="60" r="52" fill="none" stroke="#C5F255" stroke-width="10"
+                            stroke-dasharray="82 327" stroke-dashoffset="0"
+                            transform="rotate(-90 60 60)" class="harvest-arc"/>
+                    </svg>
+                    <div class="countdown-val">75–90<span>days left</span></div>
+                </div>
+                <div class="harvest-details">
+                    <div class="harvest-row"><span>Current Stage</span><strong>Early Vegetative (V3–V5)</strong></div>
+                    <div class="harvest-row"><span>Total Duration</span><strong>90–120 Days</strong></div>
+                    <div class="harvest-row"><span>Yield Potential</span><strong>5–8 tons/hectare</strong></div>
+                    <div class="harvest-row"><span>Confidence</span><strong>~80% (Visual)</strong></div>
+                </div>
+            </div>
+            <div class="growth-timeline">
+                <div class="tl-step done">Germination</div>
+                <div class="tl-line done"></div>
+                <div class="tl-step done">Emergence</div>
+                <div class="tl-line done"></div>
+                <div class="tl-step active">V3–V5</div>
+                <div class="tl-line"></div>
+                <div class="tl-step">Tasseling</div>
+                <div class="tl-line"></div>
+                <div class="tl-step">Grain Fill</div>
+                <div class="tl-line"></div>
+                <div class="tl-step">Harvest</div>
+            </div>
+        </section>
+
+        <!-- 2. Soil Suitability -->
+        <section class="report-card soil-card span-4" id="sec-soil">
+            <div class="card-header-line">
+                <div class="card-icon orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg></div>
+                <h2>Soil Suitability</h2>
+            </div>
+            <div class="soil-gauge-row">
+                <div class="gauge-wrap">
+                    <svg viewBox="0 0 100 60" class="gauge-svg">
+                        <path d="M10 55 A45 45 0 0 1 90 55" fill="none" stroke="#2b2d31" stroke-width="12" stroke-linecap="round"/>
+                        <path d="M10 55 A45 45 0 0 1 90 55" fill="none" stroke="#C5F255" stroke-width="12" stroke-linecap="round" stroke-dasharray="141" stroke-dashoffset="30" class="gauge-progress"/>
+                    </svg>
+                    <div class="gauge-val">85%</div>
+                    <div class="gauge-label">Suitability</div>
+                </div>
+                <div class="soil-params">
+                    <div class="soil-param-row"><span>pH Level</span><span class="soil-val good">5.8 – 7.5 ✅</span></div>
+                    <div class="soil-param-row"><span>Organic Matter</span><span class="soil-val warn">Medium</span></div>
+                    <div class="soil-param-row"><span>Drainage</span><span class="soil-val good">Good</span></div>
+                    <div class="soil-param-row"><span>Texture</span><span class="soil-val good">Loamy – Sandy Loam</span></div>
+                    <div class="soil-param-row"><span>EC (mS/cm)</span><span class="soil-val good">&lt; 1.0 (Safe)</span></div>
+                    <div class="soil-param-row"><span>CEC</span><span class="soil-val good">Medium</span></div>
+                </div>
+            </div>
+            <div class="tip-box">💡 Add compost or FYM to improve organic matter content.</div>
+        </section>
+
+        <!-- 7. Complete Growth Plan -->
+        <section class="report-card growth-card span-4" id="sec-growth">
+            <div class="card-header-line">
+                <div class="card-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="m5 20-1-8 5 4 3-8 3 8 5-4-1 8"/></svg></div>
+                <h2>Complete Growth Plan</h2>
+                <span class="plan-duration">90–120 Day Cycle</span>
+            </div>
+            <div class="growth-plan-grid">
+                <div class="gp-week">
+                    <div class="gp-week-label">Week 1–2</div>
+                    <div class="gp-phase-name">🌱 Germination</div>
+                    <ul class="gp-tasks">
+                        <li>Seed treatment with fungicide</li>
+                        <li>Sow at proper depth (3–5 cm)</li>
+                        <li>Full DAP + 25% MOP basal</li>
+                        <li>First irrigation after sowing</li>
+                    </ul>
+                    <div class="gp-status done-tag">✓ Completed</div>
+                </div>
+                <div class="gp-week">
+                    <div class="gp-week-label">Week 3–4</div>
+                    <div class="gp-phase-name">🌿 Leaf Development</div>
+                    <ul class="gp-tasks">
+                        <li>Root establishment phase</li>
+                        <li>Apply 1st fertilizer split</li>
+                        <li>Weed management critical</li>
+                        <li>25% Urea top dressing</li>
+                    </ul>
+                    <div class="gp-status done-tag">✓ Completed</div>
+                </div>
+                <div class="gp-week active-week">
+                    <div class="gp-week-label">Week 5–7 <span class="now-tag">NOW</span></div>
+                    <div class="gp-phase-name">🌾 Rapid Growth</div>
+                    <ul class="gp-tasks">
+                        <li>2nd Urea + MOP top dressing</li>
+                        <li>Pest monitoring critical</li>
+                        <li>Scout for Fall Armyworm</li>
+                        <li>Irrigation every 4–5 days</li>
+                    </ul>
+                    <div class="gp-status active-tag">⬤ In Progress</div>
+                </div>
+                <div class="gp-week">
+                    <div class="gp-week-label">Week 8–10</div>
+                    <div class="gp-phase-name">🌽 Tasseling & Silking</div>
+                    <ul class="gp-tasks">
+                        <li>VERY critical stage</li>
+                        <li>High water demand</li>
+                        <li>Irrigation every 2–3 days</li>
+                        <li>No stress tolerated here</li>
+                    </ul>
+                    <div class="gp-status upcoming-tag">◻ Upcoming</div>
+                </div>
+                <div class="gp-week">
+                    <div class="gp-week-label">Week 11–14</div>
+                    <div class="gp-phase-name">🌾 Grain Filling</div>
+                    <ul class="gp-tasks">
+                        <li>Nutrient demand at peak</li>
+                        <li>Maintain moisture levels</li>
+                        <li>Monitor for stalk rot</li>
+                        <li>Stop chemical sprays</li>
+                    </ul>
+                    <div class="gp-status upcoming-tag">◻ Upcoming</div>
+                </div>
+                <div class="gp-week">
+                    <div class="gp-week-label">Week 15–17</div>
+                    <div class="gp-phase-name">🌽 Maturity & Harvest</div>
+                    <ul class="gp-tasks">
+                        <li>Grain drying phase</li>
+                        <li>Harvest at 20–25% moisture</li>
+                        <li>Proper storage (cool & dry)</li>
+                        <li>Soil test for next cycle</li>
+                    </ul>
+                    <div class="gp-status upcoming-tag">◻ Upcoming</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. AI Recommendations -->
+        <section class="report-card ai-card span-4" id="sec-ai">
+            <div class="card-header-line">
+                <div class="card-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg></div>
+                <h2>AI Recommendations Summary</h2>
+                <div class="ai-model-tag">GPT-Agro v3.2</div>
+            </div>
+            <div class="ai-summary-grid">
+                <div class="ai-rec positive-rec">
+                    <div class="ai-rec-icon">✅</div>
+                    <div class="ai-rec-content">
+                        <strong>Crop is Healthy</strong>
+                        <p>Corn crop is in early vegetative stage (V3–V5) and showing healthy leaf development with no visible disease or major pest damage detected at this time.</p>
+                    </div>
+                </div>
+                <div class="ai-rec info-rec">
+                    <div class="ai-rec-icon">🌿</div>
+                    <div class="ai-rec-content">
+                        <strong>Follow Split Fertilizer Application</strong>
+                        <p>Do not apply all fertilizer at once. Use the 3-split method for Urea and 2-split for MOP. This improves nutrient use efficiency and reduces leaching losses.</p>
+                    </div>
+                </div>
+                <div class="ai-rec urgent-rec">
+                    <div class="ai-rec-icon">🚨</div>
+                    <div class="ai-rec-content">
+                        <strong>Watch Closely for Fall Armyworm</strong>
+                        <p>Fall Armyworm is the most dangerous pest for corn. Scout twice a week. Install pheromone traps now. If spotted, immediately apply Chlorantraniliprole 18.5 SC @ 150 ml/ha.</p>
+                    </div>
+                </div>
+                <div class="ai-rec info-rec">
+                    <div class="ai-rec-icon">💧</div>
+                    <div class="ai-rec-content">
+                        <strong>Maintain Regular Irrigation</strong>
+                        <p>Do not let the soil dry out. During tasseling and silking (Week 8–10), even a single day of water stress can reduce yield by up to 10%. Irrigate every 2–3 days then.</p>
+                    </div>
+                </div>
+                <div class="ai-rec info-rec">
+                    <div class="ai-rec-icon">🪱</div>
+                    <div class="ai-rec-content">
+                        <strong>Improve Soil with Organic Matter</strong>
+                        <p>Organic matter is medium. Add 5–10 tons/ha of well-decomposed FYM or vermicompost before the next crop cycle. This improves water retention, aeration, and microbial activity.</p>
+                    </div>
+                </div>
+                <div class="ai-rec positive-rec">
+                    <div class="ai-rec-icon">🌤️</div>
+                    <div class="ai-rec-content">
+                        <strong>Climate is Supporting Good Yield</strong>
+                        <p>Current temperature and humidity are within the acceptable range for corn growth. Maintain irrigation to buffer any heat stress. Expected yield: 5–8 tons/hectare with proper management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="report-footer">
+        <div>Generated by <strong>AgroAI</strong> · Analysis ID: <code id="analysisId"></code> · <span id="reportDate"></span></div>
+        <button class="btn-back" onclick="history.back()">← Back to Dashboard</button>
+    </footer>
+
+    <script src="analysis.js"></script>
+</body>
+</html>
